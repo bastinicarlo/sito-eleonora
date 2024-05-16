@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+
+
+$sito-eleonora: (
+    50 : #fee9f1,
+    100 : #fdc7dc,
+    200 : #fba2c4,
+    300 : #f97dac,
+    400 : #f8619b,
+    500 : #f74589,
+    600 : #f63e81,
+    700 : #f53676,
+    800 : #f32e6c,
+    900 : #f11f59,
+    A100 : #ffffff,
+    A200 : #fff4f7,
+    A400 : #ffc1d0,
+    A700 : #ffa7bd,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$sito-eleonora-theme: matx.define-theme((
+    color: (
+      primary: matx.$m3-violet-palette,
+    )
+  ));
+
+  html {
+    @include mat.all-component-themes($sito-eleonora-theme);
+    //@include matx.color-variants-back-compat($sito-eleonora-theme);
+  }
