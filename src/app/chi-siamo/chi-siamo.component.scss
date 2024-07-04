@@ -1,0 +1,41 @@
+p, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #716b6b;
+  }
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #716b6b;
+}
+
+div {
+  width: auto;
+  float: left;
+}
+
+.sezione{
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  overflow: hidden;
+  display: inline;
+}
+
+.full{
+  width: 100%;
+  display: flex;
+  div{
+    margin: 20px;
+  }
+}
+
+.bianco{
+  background-color: #ffffff;
+}
+
+.rosa{
+  background-color: #fef3f1;
+}
