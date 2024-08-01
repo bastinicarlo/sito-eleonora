@@ -1,9 +1,25 @@
 <img src="assets/immagini/eleonora.PNG" width="50px">
 <div class="example-button-row">
-  <a mat-flat-button routerLink="/">Home</a>
-  <a mat-flat-button routerLink="/chi-siamo">Chi siamo</a>
-  <a mat-flat-button href="https://www.google.com/" target="_blank">Corsi</a>
-  <a mat-flat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
-  <a mat-flat-button href="https://www.google.com/" target="_blank">Contatti</a>
-  <a mat-flat-button href="https://www.google.com/" target="_blank">Registrati</a>
+  @if(isActive('')){
+    <a mat-flat-button routerLink="/">Home</a>
+  }@else{
+    <a mat-button routerLink="/">Home</a>
+  }
+  @if(isActive('chi-siamo')){
+    <a mat-flat-button routerLink="/chi-siamo" routerLinkActive="active">Chi siamo</a>
+  }@else{
+    <a mat-button routerLink="/chi-siamo" routerLinkActive="active">Chi siamo</a>
+  }@if(isActive('corsi')){
+    <a mat-flat-button href="https://www.google.com/" target="_blank">Corsi</a>
+  }@else{
+    <a mat-button href="https://www.google.com/" target="_blank">Corsi</a>
+  }@if(isActive('collaborazioni')){
+    <a mat-flat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
+  }@else{
+    <a mat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
+  }@if(isActive('contatti')){
+    <a mat-flat-button href="https://www.google.com/" target="_blank">Contatti</a>
+  }@else{
+    <a mat-button href="https://www.google.com/" target="_blank">Contatti</a>
+  }
 </div>
