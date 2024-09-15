@@ -9,17 +9,25 @@
     <a mat-flat-button routerLink="/chi-siamo" routerLinkActive="active">Chi siamo</a>
   }@else{
     <a mat-button routerLink="/chi-siamo" routerLinkActive="active">Chi siamo</a>
-  }@if(isActive('corsi')){
+  }
+  @if(isActive('corsi')){
     <a mat-flat-button href="https://www.google.com/" target="_blank">Corsi</a>
   }@else{
     <a mat-button href="https://www.google.com/" target="_blank">Corsi</a>
-  }@if(isActive('collaborazioni')){
+  }
+  @if(isActive('collaborazioni')){
     <a mat-flat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
   }@else{
     <a mat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
-  }@if(isActive('contatti')){
+  }
+  @if(isActive('contatti')){
     <a mat-flat-button href="https://www.google.com/" target="_blank">Contatti</a>
   }@else{
     <a mat-button href="https://www.google.com/" target="_blank">Contatti</a>
+  }
+  @if(isActive('calendario')){
+    <a mat-flat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
+  }@else{
+    <a mat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
   }
 </div>

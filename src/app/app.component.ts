@@ -15,4 +15,5 @@ import { RoutingModule } from './app.routes'
 })
 export class AppComponent {
   title = 'sito-eleonora';
+  //static api = "https://localhost:7212";
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ChiSiamoComponent } from './chi-siamo/chi-siamo.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 export const routes: Routes = [
     {
@@ -11,6 +12,10 @@ export const routes: Routes = [
     {
         path: 'chi-siamo',
         component: ChiSiamoComponent
+    },
+    {
+        path: 'calendario',
+        component: CalendarioComponent
     }
 ];
 

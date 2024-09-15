@@ -6,7 +6,7 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [MatButtonModule, MenuComponent, FooterComponent],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

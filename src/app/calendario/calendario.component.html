@@ -1,0 +1,18 @@
+<h1>{{mesi[oggi.getMonth() - 1]}}</h1>
+@for (giorno of [getGiornoFerialeOggi(0), getGiornoFerialeOggi(1), getGiornoFerialeOggi(2), getGiornoFerialeOggi(3), getGiornoFerialeOggi(4)]; track giorno) {
+    <div>
+        <h2>{{giorni[giorno]}}</h2>
+        @for (corsoDescrizione of corsiDescrizione; track corsiDescrizione) {
+        <div>
+            <h2>{{corsoDescrizione.nome}}</h2>
+            @for (corso of corsi; track corsi) {
+                @if (corso.nome === corsoDescrizione.nome && stessoGiorno(corso, giorno)){
+                    <div>
+                        <h2>{{getOrario(corso)}}</h2>
+                    </div>
+                }
+            } 
+        </div>
+        }   
+    </div>
+}
