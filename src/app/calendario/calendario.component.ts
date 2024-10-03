@@ -4,11 +4,13 @@ import { AppComponent } from '../app.component';
 import { corso } from '../interface/corso';
 import { corsoDescrizione } from '../interface/corsoDescrizione';
 import {formatDate} from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'calendario',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, MatButtonModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.scss'
 })

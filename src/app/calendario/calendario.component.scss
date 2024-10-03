@@ -8,9 +8,10 @@ h1 {
     font-weight: bold;
     color: #ffa7bd;
     padding-left: 5%;
+    display: inline;
 }
 
-div {
+.giorni {
   width: auto;
   float: left;
   width: 80%;
@@ -20,6 +21,13 @@ div {
   padding-bottom: 5%;
   overflow: hidden;
   display: inline;
+}
+
+.corsi {
+  width: 30%;
+  padding-left: 3%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .full{

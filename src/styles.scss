@@ -44,6 +44,8 @@ $sito-eleonora-theme: matx.define-theme((
   ));
 
   html {
+    scroll-behavior: smooth;
+
     @include mat.all-component-themes($sito-eleonora-theme);
     //@include matx.color-variants-back-compat($sito-eleonora-theme);
   }
