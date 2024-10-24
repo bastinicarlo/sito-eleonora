@@ -1,47 +1,71 @@
-p, h2 {
+p, h2, h3 {
     font-family: Arial, Helvetica, sans-serif;
     color: #716b6b;
+    margin: 0.5rem;
   }
 
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: #ffa7bd;
-    padding-left: 5%;
-    display: inline;
-}
-
-.giorni {
-  width: auto;
-  float: left;
-  width: 80%;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  overflow: hidden;
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  color: #ffa7bd;
   display: inline;
 }
 
-.corsi {
-  width: 30%;
-  padding-left: 3%;
+div {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+.calendario{
+  background-color: #ffffff;
+}
+
+.sedi {
+  width: calc(50% - 2rem);
+  overflow: hidden;
   display: inline-block;
   vertical-align: top;
 }
 
-.full{
+.giorni {
+  width: calc(100% - 2rem);
+  overflow: hidden;
+  display: inline-block;
+  background-color: #ffd7f8;
+}
+
+.corsi {
+  float: left;
+  vertical-align: top;
+  width: auto;
+  height: 100%;
+  min-width: calc(33.33% - 2rem);
+}
+
+.icone{
+  height: 2.5rem;
+  display: block;
   width: 100%;
-  display: flex;
-  div{
-    margin: 20px;
+  padding: 0;
+  i{
+    margin: 0.2rem;
+    font-size: 2rem;
+    color: #beb6b69a;
+  }
+
+  a{
+    float: right;
   }
 }
 
-.bianco{
-  background-color: #ffffff;
+.colore0{
+  background-color: #fffaaf;
 }
 
-.rosa{
-  background-color: #fef3f1;
+.colore1{
+  background-color: #ffd89f;
 }
+

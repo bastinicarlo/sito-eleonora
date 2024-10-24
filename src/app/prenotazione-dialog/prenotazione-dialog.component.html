@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Conferma prenotazione</h1> 
+<div mat-dialog-content>
+  <p>Corso: {{data.nomeCorso}}</p>
+  <p>Data: {{data.dataCorso | date:'dd/MM/yyyy'}}</p>
+  <p>Ora: {{data.dataCorso | date:'HH:mm'}}</p>
+  <p>Sede: {{data.sedeCorso}}</p>
+  <mat-form-field> 
+    <input matInput [(ngModel)]="data.emailUtente"> 
+  </mat-form-field> 
+</div> 
+<div mat-dialog-actions>
+  <a mat-button mat-dialog-close>Annulla</a>
+  <a mat-button [mat-dialog-close]="data.emailUtente" >Conferma</a>
+</div>

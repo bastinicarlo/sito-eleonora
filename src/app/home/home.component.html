@@ -1,71 +1,74 @@
 <div class="sezione rosa" id="home" #home>
   <div class="full">
-    <div>
-      <h1>
-        Sentiti di nuovo donna, non solo mamma!
-      </h1>
-      <h2>
-        E chi l'ha mai detto che dopo essere diventata Mamma, non avrai più spazio da dedicare a te stessa!?
-      </h2>
-      <a mat-flat-button href="https://www.google.com/" target="_blank">Scopri di più</a>
-    </div>
-    <div class="donna-altoparlante">
-      <img src="assets/immagini/donna-altoparlante.svg">
-    </div>
+    <h1>
+      Sentiti di nuovo donna, non solo mamma!
+    </h1>
+    <h2>
+      E chi l'ha mai detto che dopo essere diventata Mamma, non avrai più spazio da dedicare a te stessa!?
+    </h2>
   </div>
 </div>
 <div class="sezione bianco" id="chi-siamo" #chiSiamo>
-  <h1>
-    Ma prima... qualcosa su di me
-  </h1>
   <div class="full">
-    <div>
+    <h1>
+      Ma prima... qualcosa su di me
+    </h1>
+    <div class="img-eleonora">
       <img src="assets/immagini/eleonora.PNG">
-    </div>
-    <div>
-      <h2>
-        Eleonora Boaretto
-      </h2>
-      <p>
-        Breve descrizione Eleonora
-      </p>
-      <p>
-        della sua passione e di cosa voglia costruire
-      </p>
-      <a mat-flat-button href="https://www.google.com/" target="_blank">Scopri di più</a>
+      <div class="testo">
+        <h2>
+          Eleonora Boaretto
+        </h2>
+        <p>
+          Sono Eleonora Boaretto, Dottoressa in Scienze motorie e specializzata in ciò 
+          che riguarda il mondo maternità, fittness e pavimento pelvico sia femminile che maschile.
+        </p>
+        <p>
+          Per quanto riguarda la mia formazione sono diventata prima Personal Trainer specializzata
+          in allenamento al femminile e successivamente mi sono laureata e sono diventata Chinesiologa.
+        </p>
+        <p>
+          Sono riuscita ad unire la mia passione per lo Sport al mio amore e interesse per il Pavimento
+          pelvico e il mondo Maternità.
+        </p>
+      </div>
     </div>
   </div>
 </div>
-<div class="sezione rosa">
-  <div>
-    <h1>
-      I NOSTRI CORSI
-    </h1>
-  </div>
+<div class="sezione rosa corsi" id="corsi" #corsi>
   <div class="full">
-    <div>
-      <img src="assets/immagini/eleonora.PNG">
-      <h2>
-        GINNASTICA PRE-PARTO
-      </h2>
+    <h1>
+      I nostri corsi
+    </h1>
+    <div class="lista-corsi">
+      @for(corsoDescrizione of corsiDescrizione; track corsiDescrizione){
+        @if(isSelected(corsoDescrizione.nome)){
+          <div class="corso selected">
+            <div class="img-corso">
+              <img src="assets/immagini/{{corsoDescrizione.nome}}.png">
+            </div>
+            <h2>
+              {{corsoDescrizione.nome}}
+            </h2>
+          </div>
+        }@else{
+          <div class="corso" (click)="changeSelected(corsoDescrizione.nome)">
+            <div class="img-corso">
+              <img src="assets/immagini/{{corsoDescrizione.nome}}.png">
+            </div>
+            <h2>
+              {{corsoDescrizione.nome}}
+            </h2>
+          </div>
+        }
+      }
     </div>
-    <div>
-      <img src="assets/immagini/eleonora.PNG">
-      <h2>
-        GINNASTICA POST-PARTO
-      </h2>
-    </div>
-    <div>
-      <img src="assets/immagini/eleonora.PNG">
-      <h2>
-        TONE UP YOUR BODY
-      </h2>
-    </div>
-    <div>
-      <img src="assets/immagini/eleonora.PNG">
-      <h2>
-        PERSONAL TRAINING
-      </h2>
-    </div>
+    @for(corsoDescrizione of corsiDescrizione; track corsiDescrizione){
+      @if(isSelected(corsoDescrizione.nome)){
+        <div class="descrizione selected">
+          <p>{{corsoDescrizione.descrizione}}</p>
+        </div>
+      }
+    }
   </div>
 </div>
