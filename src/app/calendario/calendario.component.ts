@@ -42,6 +42,14 @@ export class CalendarioComponent {
     this.email = this.cookieService.get('email');
     this.getPrenotazioni();
   }
+
+  ngDoCheck() {
+    var email = this.email = this.cookieService.get('email');
+    if(email != this.email){
+      this.email = email;
+      this.getPrenotazioni();
+    }
+  }
   
   public getSedi(){
     this.http.get<sede[]>("http://localhost:5027/api/sedi").subscribe((data) => {

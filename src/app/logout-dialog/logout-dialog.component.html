@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Effettuare il logout?</h1> 
+<div mat-dialog-content>
+  <mat-form-field> 
+    <p>{{data}}</p>
+  </mat-form-field> 
+</div> 
+<div mat-dialog-actions>
+  <a mat-button mat-dialog-close>Annulla</a>
+  <a mat-button [mat-dialog-close]="data" >Logout</a>
+</div>

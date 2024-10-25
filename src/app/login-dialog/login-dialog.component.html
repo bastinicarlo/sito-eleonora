@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Inserire email</h1> 
+<div mat-dialog-content>
+  <mat-form-field> 
+    <input matInput [(ngModel)]="data"> 
+  </mat-form-field> 
+</div> 
+<div mat-dialog-actions>
+  <a mat-button mat-dialog-close>Annulla</a>
+  <a mat-button [mat-dialog-close]="data" >Login</a>
+</div>

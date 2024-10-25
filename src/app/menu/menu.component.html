@@ -1,4 +1,4 @@
-<img src="logo.png">
+<a href="#" routerLinkActive="active"><img src="logo.png"></a>
 <div class="pulsanti">
   @if(isActive('home')){
     <a mat-flat-button href="#" routerLinkActive="active">Home</a>
@@ -30,5 +30,14 @@
   }@else{
     <a mat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
   }
-  <i class="fa-solid fa-user"></i>
+  @if(this.email){
+    <a mat-flat-button (click)="logout()">
+      <p>{{this.email}}</p>
+    </a>
+  }
+  @else{
+    <a mat-flat-button (click)="login()" class="login">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  }
 </div>
