@@ -16,23 +16,19 @@
     <a mat-button href="#corsi" routerLinkActive="active">Corsi</a>
   }
   @if(isActive('sedi')){
-    <a mat-flat-button href="#sedi" target="_blank">Sedi</a>
+    <a mat-flat-button href="#sedi" routerLinkActive="active">Sedi</a>
   }@else{
-    <a mat-button href="https://www.google.com/" target="_blank">Sedi</a>
-  }
-  @if(isActive('collaborazioni')){
-    <a mat-flat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
-  }@else{
-    <a mat-button href="https://www.google.com/" target="_blank">Collaborazioni</a>
+    <a mat-button href="#sedi" routerLinkActive="active">Sedi</a>
   }
   @if(isActive('contatti')){
-    <a mat-flat-button href="https://www.google.com/" target="_blank">Contatti</a>
+    <a mat-flat-button href="#contatti" routerLinkActive="active">Contatti</a>
   }@else{
-    <a mat-button href="https://www.google.com/" target="_blank">Contatti</a>
+    <a mat-button href="#contatti" routerLinkActive="active">Contatti</a>
   }
   @if(isActive('calendario')){
     <a mat-flat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
   }@else{
     <a mat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
   }
+  <i class="fa-solid fa-user"></i>
 </div>

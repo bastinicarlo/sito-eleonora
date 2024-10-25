@@ -3,29 +3,29 @@
         <h1>{{mesi[oggi.getMonth() - 1]}} </h1>
         <h1>{{oggi.getFullYear()}} </h1>
     </div>
-    @for(sede of sedi; track sede) {
+    @for(sede of sedi; track $index) {
         <div class="sedi colore{{$index}}">
             <h1>{{sede.nome}}</h1>
-            @for (giorno of [getGiornoFerialeOggi(0), getGiornoFerialeOggi(1), getGiornoFerialeOggi(2), getGiornoFerialeOggi(3), getGiornoFerialeOggi(4), getGiornoFerialeOggi(5)]; track giorno) {
+            @for (giorno of [getGiornoFerialeOggi(0), getGiornoFerialeOggi(1), getGiornoFerialeOggi(2), getGiornoFerialeOggi(3), getGiornoFerialeOggi(4), getGiornoFerialeOggi(5)]; track $index) {
                 <div class="giorni">
                     <h2>{{giorni[giorno]}}</h2>
-                    @for (corsoDescrizione of corsiDescrizione; track corsiDescrizione) {
+                    @for (corsoDescrizione of corsiDescrizione; track $index) {
                         <div class="corsi">
                             <h2>{{corsoDescrizione.nome}}</h2>
-                            @for (corso of corsi; track corsi) {
+                            @for (corso of corsi; track $index) {
                                 @if (corso.attivo && sede.nome === corso.sede && corso.nome === corsoDescrizione.nome && stessoGiorno(corso, giorno)){
                                     <h3>{{getOrario(corso)}}</h3>
                                     <div class="icone">
-                                        @for(icon of [1, 2, 3, 4, 5]; track icon){
-                                            <i class="fas fa-person"></i>
-                                        }
-                                        @if(isPrenotato(corso)){
-                                            <a mat-flat-button (click)="prenota(corso)">Annulla prenotazione</a>
-                                        }
-                                        @else{
-                                            <a mat-flat-button (click)="prenota(corso)">Prenota</a>
+                                        @for(icon of [1, 2, 3, 4, 5]; track $index){
+                                            <i class="fas fa-person {{percentualePrenotato($index, corso.postiDisponibili, corso.postiPrenotati)}}"></i>
                                         }
                                     </div>
+                                    @if(isPrenotato(corso)){
+                                        <a mat-button (click)="eliminaPrenotazione(corso)">Elimina</a>
+                                    }
+                                    @else{
+                                        <a mat-flat-button (click)="prenota(corso)">Prenota</a>
+                                    }
                                 }
                             }
                         </div>

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Eliminare prenotazione?</h1> 
+<div mat-dialog-content>
+  <p>Corso: {{data.nomeCorso}}</p>
+  <p>Data: {{data.dataCorso | date:'dd/MM/yyyy'}}</p>
+  <p>Ora: {{data.dataCorso | date:'HH:mm'}}</p>
+  <p>Sede: {{data.sedeCorso}}</p>
+</div> 
+<div mat-dialog-actions>
+  <a mat-button [mat-dialog-close]=false>Annulla</a>
+  <a mat-button [mat-dialog-close]=true>Elimina</a>
+</div>

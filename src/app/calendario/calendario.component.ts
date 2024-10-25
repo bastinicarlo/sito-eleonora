@@ -1,25 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { sede } from '../interface/sede';
 import { corso } from '../interface/corso';
 import { corsoDescrizione } from '../interface/corsoDescrizione';
 import { prenotazione } from '../interface/prenotazione';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { EmailValidator, FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 import { PrenotazioneDialogComponent } from '../prenotazione-dialog/prenotazione-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EliminaPrenotazioneDialogComponent } from '../elimina-prenotazione-dialog/elimina-prenotazione-dialog.component';
 
 @Component({
   selector: 'calendario',
   standalone: true,
   imports:[ 
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
     MatButtonModule, 
     MatFormFieldModule, 
     MatDialogModule, 
@@ -43,31 +39,31 @@ export class CalendarioComponent {
     this.getSedi();
     this.getCorsi();
     this.getCorsiDescrizione();
-    this.getPrenotazioni();
     this.email = this.cookieService.get('email');
+    this.getPrenotazioni();
   }
   
   public getSedi(){
     this.http.get<sede[]>("http://localhost:5027/api/sedi").subscribe((data) => {
-      this.sedi = data
+      this.sedi = data;
     });
   }
   
   public getCorsi(){
     this.http.get<corso[]>("http://localhost:5027/api/corsi").subscribe((data) => {
-      this.corsi = data
+      this.corsi = data;
     });
   }
 
   public getCorsiDescrizione(){
     this.http.get<corsoDescrizione[]>("http://localhost:5027/api/corsi/descrizione").subscribe((data) => {
-      this.corsiDescrizione = data
+      this.corsiDescrizione = data;
     });
   }
   
   public getPrenotazioni(){
     this.http.get<corsoDescrizione[]>("http://localhost:5027/api/prenotazioni/" + this.email).subscribe((data) => {
-      this.prenotazioni = data
+      this.prenotazioni = data;
     });
   }
 
@@ -111,8 +107,22 @@ export class CalendarioComponent {
         this.email = result;
         this.cookieService.set('email', result)
         var p : prenotazione = {emailUtente: result, nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede};
-        console.log(p);
         this.http.post<prenotazione>("http://localhost:5027/api/prenotazioni", p ).subscribe((data) => {
+          this.getPrenotazioni();
+        });
+      }
+    });
+  }
+
+  public eliminaPrenotazione(c: corso): void {
+    const dialogRef = this.dialog.open(EliminaPrenotazioneDialogComponent, {
+      data: {emailUtente: this.email , nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        var p : prenotazione = {emailUtente: this.email, nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede};
+        this.http.post<prenotazione>("http://localhost:5027/api/prenotazioni/elimina", p ).subscribe((data) => {
           this.getPrenotazioni();
         });
       }
@@ -130,5 +140,15 @@ export class CalendarioComponent {
       }
     });
     return r;
+  }
+
+  public percentualePrenotato(n: number, nDisponibili: number, nPrenotati: number){
+    if(!nDisponibili)
+      return "grigio";
+    var percentuale = nPrenotati / nDisponibili;
+    if(n/5 + 0.2 <= percentuale)
+      return "rosa";
+    else
+      return "grigio";
   }
 }

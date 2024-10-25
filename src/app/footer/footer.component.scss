@@ -3,9 +3,26 @@
 }
 
 .full{
-    width: 100%;
-    display: flex;
-    div{
-      margin: 20px;
-    }
+  width: 100%;
+  display: flex;
+  div{
+    margin: 1rem;
   }
+}
+
+img{
+  height: 100px;
+  margin: 2rem;
+}
+
+a{
+  color: black
+}
+
+i{
+  margin-right: 0.5rem;
+}
+
+.sezioni{
+  flex:1;
+}

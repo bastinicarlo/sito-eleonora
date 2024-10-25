@@ -42,7 +42,7 @@ div {
   vertical-align: top;
   width: auto;
   height: 100%;
-  min-width: calc(33.33% - 2rem);
+  min-width: calc(25% - 2rem);
 }
 
 .icone{
@@ -53,12 +53,18 @@ div {
   i{
     margin: 0.2rem;
     font-size: 2rem;
+  }
+  .grigio{
     color: #beb6b69a;
   }
-
-  a{
-    float: right;
+  .rosa{
+    color: #ca71c39a;
   }
+}
+
+a{
+  float: middle;
+  margin-left: 1rem;
 }
 
 .colore0{

@@ -41,7 +41,7 @@
       I nostri corsi
     </h1>
     <div class="lista-corsi">
-      @for(corsoDescrizione of corsiDescrizione; track corsiDescrizione){
+      @for(corsoDescrizione of corsiDescrizione; track $index){
         @if(isSelected(corsoDescrizione.nome)){
           <div class="corso selected">
             <div class="img-corso">
@@ -63,7 +63,7 @@
         }
       }
     </div>
-    @for(corsoDescrizione of corsiDescrizione; track corsiDescrizione){
+    @for(corsoDescrizione of corsiDescrizione; track $index){
       @if(isSelected(corsoDescrizione.nome)){
         <div class="descrizione selected">
           <p>{{corsoDescrizione.descrizione}}</p>
