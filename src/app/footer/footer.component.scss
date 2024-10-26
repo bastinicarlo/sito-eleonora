@@ -2,11 +2,18 @@
     background-color: lightgray;
 }
 
+p{
+  white-space: pre;
+}
+
 .full{
   width: 100%;
   display: flex;
   div{
     margin: 1rem;
+    @media (max-width: 800px) {
+      margin: 0.5rem;
+    }
   }
 }
 
@@ -14,6 +21,9 @@ img{
   height: 100px;
   margin: 2rem;
   filter: drop-shadow(2px 2px 2px #6464648e);
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 a{
@@ -25,6 +35,14 @@ i{
   filter: drop-shadow(2px 2px 2px #6464648e);
 }
 
+
 .sezioni{
   flex:1;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  p{
+    font-size: 0.6rem;
+  }
 }

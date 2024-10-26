@@ -6,17 +6,28 @@ p, h1, h2 {
 
 p{
   font-weight: 600;
+  @media (max-width: 800px) {
+    margin: 0.5rem;
+  }
 }
 
-h1 {
+h1{
   font-size: 3rem;
   font-weight: 700;
   color: #3c4043;
+  @media (max-width: 800px) {
+    font-size: 2rem;
+    margin: 0.5rem;
+  }
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 600;
+  @media (max-width: 800px) {
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
 }
 
 .sezione{
@@ -24,9 +35,14 @@ h2 {
 }
 
 .full{
-  max-width: 60rem;
-  padding: 2rem;
-  margin: auto;
+  @media (min-width: 800px) {
+    max-width: 60rem;
+    padding: 2rem;
+    margin: auto;
+  }
+  @media (max-width: 800px) {
+    padding: 1rem;
+  }
 }
 
 .img-eleonora{
@@ -36,6 +52,10 @@ h2 {
     border-radius: 20px;
     margin: 2rem;
     box-shadow: 2px 2px 2px #6464648e;
+    @media (max-width: 800px) {
+      height: 160px;
+      margin: 1rem;
+    }
   }
 }
 
@@ -63,12 +83,18 @@ h2 {
     text-align: center;
     margin: auto;
     display: flex;
+    @media (max-width: 800px) {
+      height: 100px;
+    }
   }
 }
 
 .descrizione{
   padding: 2rem;
   border-radius: 20px;
+  @media (max-width: 800px) {
+    padding: 1rem;
+  }
   p{
     margin: 0;
     font-weight: 600;

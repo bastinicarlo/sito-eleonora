@@ -11,12 +11,20 @@ h1 {
   font-size: 4rem;
   color: #ba005c;
   display: inline;
+  @media (max-width: 1000px) {
+    font-size: 3rem;
+    margin: 0.5rem;
+  }
 }
 
 div {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 20px;
+  @media (max-width: 1000px) {
+    margin: 0.2rem;
+    padding: 0.2rem;
+  }
 }
 
 .calendario{
@@ -31,6 +39,12 @@ div {
   h1{
     font-size: 2.8rem;
   }
+  @media (max-width: 1000px) {
+    width: calc(50% - 0.8rem);
+    h1{
+      font-size: 2rem;
+    }
+  }
 }
 
 .giorni {
@@ -38,6 +52,9 @@ div {
   overflow: hidden;
   display: inline-block;
   background-color: #fbe0e0;
+  @media (max-width: 1000px) {
+    width: calc(100% - 0.8rem);
+  }
 }
 
 .corsi {
@@ -53,6 +70,15 @@ div {
   h3{
     text-align: center;
   }
+  @media (max-width: 1000px) {
+    width: calc(50% - 0.4rem);
+    h2{
+      font-size: 1rem;
+    }
+    h3{
+      font-size: 0.8rem;
+    }
+  }
 }
 
 .icone{
@@ -61,10 +87,16 @@ div {
   display: flex;
   width: 8.2rem;
   padding: 0;
+  @media (max-width: 1000px) {
+    width: 7.2rem;
+  }
   i{
     margin: 0.2rem;
     font-size: 2rem;
     text-shadow: 1px 1px 1px #6464648e;
+    @media (max-width: 1000px) {
+      margin: 0.1rem;
+    }
   }
   .grigio{
     color: #e4e4e4;
@@ -79,6 +111,9 @@ a{
   margin: auto;
   margin-top: 0.2rem;
   box-shadow: 2px 2px 2px #6464648e;
+  @media (max-width: 1000px) {
+    margin-bottom: 0.2rem;
+  }
 }
 
 .colore0{

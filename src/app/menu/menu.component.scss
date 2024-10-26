@@ -42,3 +42,9 @@ i{
   width: 50px;
   color: #ba005c;
 }
+
+.mobile{
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
