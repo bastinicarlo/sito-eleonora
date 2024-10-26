@@ -26,6 +26,8 @@ import { EliminaPrenotazioneDialogComponent } from '../elimina-prenotazione-dial
   styleUrl: './calendario.component.scss'
 })
 export class CalendarioComponent {
+  //private server: string = "http://localhost:5027/api/";
+  private server: string = "http://www.eleonoraboarettofit.com/";
   public sedi: any;
   public corsi: any;
   public corsiDescrizione: any;
@@ -55,25 +57,25 @@ export class CalendarioComponent {
   }
   
   public getSedi(){
-    this.http.get<sede[]>("http://localhost:5027/api/sedi").subscribe((data) => {
+    this.http.get<sede[]>(this.server + "sedi").subscribe((data) => {
       this.sedi = data;
     });
   }
   
   public getCorsi(){
-    this.http.get<corso[]>("http://localhost:5027/api/corsi").subscribe((data) => {
+    this.http.get<corso[]>(this.server + "corsi").subscribe((data) => {
       this.corsi = data;
     });
   }
 
   public getCorsiDescrizione(){
-    this.http.get<corsoDescrizione[]>("http://localhost:5027/api/corsi/descrizione").subscribe((data) => {
+    this.http.get<corsoDescrizione[]>(this.server + "corsi/descrizione").subscribe((data) => {
       this.corsiDescrizione = data;
     });
   }
   
   public getPrenotazioni(){
-    this.http.get<corsoDescrizione[]>("http://localhost:5027/api/prenotazioni/" + this.email).subscribe((data) => {
+    this.http.get<corsoDescrizione[]>(this.server + "prenotazioni/" + this.email).subscribe((data) => {
       this.prenotazioni = data;
     });
   }
@@ -119,7 +121,7 @@ export class CalendarioComponent {
         this.email = result;
         this.cookieService.set('email', result)
         var p : prenotazione = {emailUtente: result, nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede};
-        this.http.post<prenotazione>("http://localhost:5027/api/prenotazioni", p ).subscribe((data) => {
+        this.http.post<prenotazione>(this.server + "prenotazioni", p ).subscribe((data) => {
           this.getPrenotazioni();
         });
       }
@@ -134,7 +136,7 @@ export class CalendarioComponent {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         var p : prenotazione = {emailUtente: this.email, nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede};
-        this.http.post<prenotazione>("http://localhost:5027/api/prenotazioni/elimina", p ).subscribe((data) => {
+        this.http.post<prenotazione>(this.server + "prenotazioni/elimina", p ).subscribe((data) => {
           this.getPrenotazioni();
         });
       }

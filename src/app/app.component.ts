@@ -15,6 +15,5 @@ import { CalendarioComponent } from "./calendario/calendario.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'sito-eleonora';
-  //static api = "https://localhost:7212";
+  title = 'sito-eleonora-boaretto';
 }

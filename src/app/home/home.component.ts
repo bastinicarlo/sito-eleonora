@@ -23,6 +23,9 @@ export class HomeComponent {
   @ViewChild('corsi')
   corsiElement!: ElementRef;
 
+  
+  //private server: string = "http://localhost:5027/api/";
+  private server: string = "http://www.eleonoraboarettofit.com/";
   public homeOffset: number = 0;
   public chiSiamoOffset: number = 0;
   public corsiOffset: number = 0;
@@ -35,7 +38,7 @@ export class HomeComponent {
   }
 
   public getCorsiDescrizione(){
-    this.http.get<corsoDescrizione[]>("http://localhost:5027/api/corsi/descrizione").subscribe((data) => {
+    this.http.get<corsoDescrizione[]>(this.server + "corsi/descrizione").subscribe((data) => {
       this.corsiDescrizione = data
       this.changeSelected(this.corsiDescrizione[0].nome);
     });
