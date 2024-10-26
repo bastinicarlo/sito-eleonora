@@ -32,10 +32,12 @@ export class CalendarioComponent {
   public prenotazioni: any;
   public email: any;
   oggi = new Date();
+  giorniDate: any;
   giorni = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
   mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Settembre", "Ottobre", "Novembre", "Dicembre"];
 
   constructor(private http: HttpClient, public dialog: MatDialog, private cookieService: CookieService ){
+    this.getGiornoDate();
     this.getSedi();
     this.getCorsi();
     this.getCorsiDescrizione();
@@ -48,6 +50,7 @@ export class CalendarioComponent {
     if(email != this.email){
       this.email = email;
       this.getPrenotazioni();
+      this.getCorsi();
     }
   }
   
@@ -75,34 +78,35 @@ export class CalendarioComponent {
     });
   }
 
-  public getGiorno(giorno: Date){
-    var g = giorno.getDay() - 1;
-    if(g < 0){
-      return 6;
+  public getGiornoDate(){
+    this.giorniDate = [];
+    var giorno = new Date();
+    
+    for (let i = 0; i < 6; i++) {
+      if(giorno.getDay() == 6){
+        giorno.setDate(giorno.getDate() + 2);
+      }
+      else if(giorno.getDay() == 7){
+        giorno.setDate(giorno.getDate() + 1);
+      }
+      this.giorniDate.push(new Date(giorno));
+      giorno.setDate(giorno.getDate() + 1);
     }
-    return g;
   }
 
-  public getGiornoFeriale(giorno: Date, n: number){
-    var g = (this.getGiorno(giorno) + n) % 5;
-    if(g < 5){
-      return g;
-    }
-    return 0;
-  }
-
-  public getGiornoFerialeOggi(n: number){
-    return this.getGiornoFeriale(this.oggi, n);
-  }
-
-  public stessoGiorno(c: corso, giorno: number){
-    var data1 = new Date(c.data);
-    return this.getGiorno(data1) == giorno;
+  public stessoGiorno(c: corso, giorno: Date){
+    var data = new Date(c.data);
+    return data.getDate() == giorno.getDate();
   }
 
   public getOrario(c: corso){
     var data = new Date(c.data);
     return data.getHours() +":00 - "+ (data.getHours()+1) +":00";
+  }
+
+  public isOggi(c: corso){
+    var data = new Date(c.data);
+    return data.getDate() == this.oggi.getDate();
   }
 
   public prenota(c: corso): void {

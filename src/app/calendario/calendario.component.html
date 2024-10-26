@@ -6,9 +6,9 @@
     @for(sede of sedi; track $index) {
         <div class="sedi colore{{$index}}">
             <h1>{{sede.nome}}</h1>
-            @for (giorno of [getGiornoFerialeOggi(0), getGiornoFerialeOggi(1), getGiornoFerialeOggi(2), getGiornoFerialeOggi(3), getGiornoFerialeOggi(4), getGiornoFerialeOggi(5)]; track $index) {
+            @for (giorno of giorniDate; track $index) {
                 <div class="giorni">
-                    <h2>{{giorni[giorno]}}</h2>
+                    <h2>{{giorni[giorno.getDay() - 1]}}</h2>
                     @for (corsoDescrizione of corsiDescrizione; track $index) {
                         <div class="corsi">
                             <h2>{{corsoDescrizione.nome}}</h2>
@@ -17,11 +17,16 @@
                                     <h3>{{getOrario(corso)}}</h3>
                                     <div class="icone">
                                         @for(icon of [1, 2, 3, 4, 5]; track $index){
-                                            <i class="fas fa-person {{percentualePrenotato($index, corso.postiDisponibili, corso.postiPrenotati)}}"></i>
+                                            <i class="fa-solid fa-person-dress {{percentualePrenotato($index, corso.postiDisponibili, corso.postiPrenotati)}}"></i>
                                         }
                                     </div>
                                     @if(isPrenotato(corso)){
-                                        <a mat-button (click)="eliminaPrenotazione(corso)">Elimina</a>
+                                        @if(isOggi(corso)){
+                                            <a mat-flat-button disabled>Prenotato</a>
+                                        }
+                                        @else{
+                                            <a mat-button (click)="eliminaPrenotazione(corso)">Elimina Prenotazione</a>
+                                        }
                                     }
                                     @else{
                                         <a mat-flat-button (click)="prenota(corso)">Prenota</a>
