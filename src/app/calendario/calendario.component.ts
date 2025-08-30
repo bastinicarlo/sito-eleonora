@@ -40,7 +40,7 @@ export class CalendarioComponent {
   oggi = new Date();
   giorniDate: any;
   giorni = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
-  mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+  mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
 
   constructor(private http: HttpClient, public dialog: MatDialog, private cookieService: CookieService ){
     this.getGiornoDate();

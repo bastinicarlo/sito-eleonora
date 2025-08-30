@@ -38,7 +38,7 @@ export class HomeComponent {
   }
 
   public getCorsiDescrizione(){
-    this.http.get<corsoDescrizione[]>(this.server + "corsi/descrizione").subscribe((data) => {
+    this.http.get<corsoDescrizione[]>(this.server + "corsi/descrizione/principali").subscribe((data) => {
       this.corsiDescrizione = data;
       this.changeSelected(this.corsiDescrizione[0].nome);
     });
