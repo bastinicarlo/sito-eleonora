@@ -42,7 +42,7 @@ div {
   @media (max-width: 1000px) {
     width: calc(50% - 0.8rem);
     h1{
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
 }
@@ -54,6 +54,9 @@ div {
   background-color: #fbe0e0;
   @media (max-width: 1000px) {
     width: calc(100% - 0.8rem);
+    h2{
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -71,12 +74,16 @@ div {
     text-align: center;
   }
   @media (max-width: 1000px) {
-    width: calc(50% - 0.4rem);
+    width: calc(100% - 0.2rem);
     h2{
-      font-size: 1rem;
+      text-align: left;
+      font-size: 0.8rem;
+      margin-left: 0.2rem;
     }
     h3{
+      text-align: left;
       font-size: 0.8rem;
+      margin-left: 0.2rem;
     }
   }
 }
@@ -107,6 +114,7 @@ div {
 }
 
 a{
+  text-align: center;
   display: flex;
   margin: auto;
   margin-top: 0.2rem;

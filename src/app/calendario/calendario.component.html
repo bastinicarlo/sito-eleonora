@@ -8,7 +8,7 @@
             <h1>{{sede.nome}}</h1>
             @for (giorno of giorniDate; track $index) {
                 <div class="giorni">
-                    <h2>{{giorni[giorno.getDay() - 1]}}</h2>
+                    <h2>{{giorni[giorno.getDay() - 1]}} {{giorno.getDate()}}/{{giorno.getMonth() + 1}}</h2>
                     @for (corsoDescrizione of corsiDescrizione; track $index) {
                         <div class="corsi">
                             <h2>{{corsoDescrizione.nome}}</h2>
@@ -21,7 +21,7 @@
                                         }
                                     </div>
                                     @if(isPrenotato(corso)){
-                                        @if(isOggi(corso)){
+                                        @if(isCancellabile(corso)){
                                             <a mat-flat-button disabled>Prenotato</a>
                                         }
                                         @else{
@@ -29,7 +29,15 @@
                                         }
                                     }
                                     @else{
-                                        <a mat-flat-button (click)="prenota(corso)">Prenota</a>
+                                        @if(corso.postiDisponibili > corso.postiPrenotati){
+                                            <a mat-flat-button (click)="prenota(corso)">Prenota</a>
+                                        }
+                                        @else{
+                                            <a mat-flat-button disabled>Pieno</a>
+                                        }
+                                    }
+                                    @if(email == "eleboaretto01@gmail.com"){
+                                        <a mat-flat-button (click)="prenotati(corso)">Dettaglio</a>
                                     }
                                 }
                             }

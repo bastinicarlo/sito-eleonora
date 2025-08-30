@@ -24,9 +24,18 @@ a {
   height: 50px;
 }
 
+.logo {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  display: inline;
+  overflow: hidden;
+}
+
 img {
   height: 70px;
   width: 70px;
+  border-radius: 35px;
 }
 
 i{
@@ -35,6 +44,10 @@ i{
   :hover{
     cursor: pointer;
   }
+}
+
+.logout{
+  margin-right: 5px;
 }
 
 .login{

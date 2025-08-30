@@ -8,12 +8,18 @@ p{
 
 .full{
   width: 100%;
-  display: flex;
   div{
-    margin: 1rem;
+    padding: 1rem;
+    margin: 0;
     @media (max-width: 800px) {
-      margin: 0.5rem;
+      padding: 0.5rem;
     }
+  }
+  @media (max-width: 800px) {
+    display: inline;
+  }
+  @media (min-width: 800px) {
+    display: flex;
   }
 }
 
@@ -32,17 +38,16 @@ a{
 
 i{
   margin-right: 0.5rem;
-  filter: drop-shadow(2px 2px 2px #6464648e);
+  filter: drop-shadow(1px 1px 1px #6464648e);
 }
 
 
 .sezioni{
-  flex:1;
-  overflow: hidden;
-}
-
-@media (max-width: 800px) {
-  p{
-    font-size: 0.6rem;
+  @media (max-width: 800px) {
+    width: calc(100% - 1rem);
+  }
+  @media (min-width: 800px) {
+    flex:1;
+    overflow: hidden;
   }
 }

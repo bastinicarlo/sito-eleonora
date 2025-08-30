@@ -1,9 +1,11 @@
-<a href="#" routerLinkActive="active"><img src="logo.png"></a>
+<div class="logo">
+  <a href="#" routerLinkActive="active"><img src="logo.png"></a>
+</div>
 <div class="pulsanti">
   @if(isActive('home')){
-    <a mat-flat-button href="#" routerLinkActive="active">Home</a>
+    <a mat-flat-button href="#" routerLinkActive="active" class="mobile">Home</a>
   }@else{
-    <a mat-button href="#" routerLinkActive="active">Home</a>
+    <a mat-button href="#" routerLinkActive="active" class="mobile">Home</a>
   }
   @if(isActive('chi-siamo')){
     <a mat-flat-button href="#chi-siamo" routerLinkActive="active" class="mobile">Chi siamo</a>
@@ -21,9 +23,9 @@
     <a mat-button href="#sedi" routerLinkActive="active" class="mobile">Sedi</a>
   }
   @if(isActive('contatti')){
-    <a mat-flat-button href="#contatti" routerLinkActive="active">Contatti</a>
+    <a mat-flat-button href="#contatti" routerLinkActive="active" class="mobile">Contatti</a>
   }@else{
-    <a mat-button href="#contatti" routerLinkActive="active">Contatti</a>
+    <a mat-button href="#contatti" routerLinkActive="active" class="mobile">Contatti</a>
   }
   @if(isActive('calendario')){
     <a mat-flat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
@@ -31,7 +33,7 @@
     <a mat-button routerLink="/calendario" routerLinkActive="active">Calendario</a>
   }
   @if(this.email){
-    <a mat-flat-button (click)="logout()">
+    <a mat-flat-button (click)="logout()" class="logout">
       <p>{{this.email}}</p>
     </a>
   }

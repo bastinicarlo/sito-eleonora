@@ -47,7 +47,7 @@ h2 {
 
 .img-eleonora{
   display: flex;
-  img{
+  .foto{
     height: 400px;
     border-radius: 20px;
     margin: 2rem;
@@ -76,6 +76,9 @@ h2 {
   h2 {
     margin: 0.5rem;
     text-align: center;
+    @media (max-width: 800px) {
+      font-size: 3vw;
+    }
   }
   img{
     padding: 0.5rem;
@@ -84,7 +87,7 @@ h2 {
     margin: auto;
     display: flex;
     @media (max-width: 800px) {
-      height: 100px;
+      height: 20vw;
     }
   }
 }
@@ -112,4 +115,59 @@ h2 {
 
 .rosa{
   background-color: #fef3f1;
+}
+
+.fiore{
+  position: absolute;
+  width: 150px;
+  @media (max-width: 800px) {
+    width: 50px;
+  }
+}
+
+.fiore1{
+  top: 100px;
+  left: calc(30vw  - 400px);
+  @media (max-width: 800px) {
+    left: -28px;
+  }
+}
+
+.fiore2{
+  top: 840px;
+  left: calc(30vw  - 550px);
+  @media (max-width: 800px) {
+    top: calc(760px - 40vw);
+    left: 20px;
+  }
+}
+
+.fiore3{
+  top: 330px;
+  right: calc(30vw  - 250px);
+  @media (max-width: 800px) {
+    top: calc(330px - 20vw);
+    right: 0;
+  }
+}
+
+.fiore4{
+  top: 550px;
+  left: calc(30vw  - 300px);
+  @media (max-width: 800px) {
+    top: calc(440px - 20vw);
+    left: 5px;
+  }
+  @media (max-width: 419px) {
+    top: calc(600px - 40vw);
+  }
+}
+
+.fiore5{
+  top: 1000px;
+  right: 4vw;
+  @media (max-width: 800px) {
+    top: calc(1160px - 90vw);
+    right: 0;
+  }
 }
