@@ -30,8 +30,8 @@ import { PrenotazioniDialogComponent } from '../prenotazioni-dialog/prenotazioni
   styleUrl: './calendario.component.scss'
 })
 export class CalendarioComponent {
-  //private server: string = "https://localhost:44392/api/";
-  private server: string = "https://www.eleonoraboarettofit.com/api/";
+  private server: string = "https://localhost:44392/api/";
+  //private server: string = "https://www.eleonoraboarettofit.com/api/";
   public sedi: any;
   public corsi: any;
   public corsiDescrizione: any;
@@ -52,6 +52,10 @@ export class CalendarioComponent {
   }
 
   ngDoCheck() {
+    this.updateAccount();
+  }
+
+  public updateAccount(){
     var email = this.cookieService.get('email');
     if(email != this.email){
       this.email = email;
@@ -79,9 +83,11 @@ export class CalendarioComponent {
   }
   
   public getPrenotazioni(){
-    this.http.get<corsoDescrizione[]>(this.server + "prenotazioni?email=" + this.email).subscribe((data) => {
-      this.prenotazioni = data;
-    });
+    if(this.email){
+      this.http.get<corsoDescrizione[]>(this.server + "prenotazioni?email=" + this.email).subscribe((data) => {
+        this.prenotazioni = data;
+      });
+    }
   }
 
   public getGiornoDate(){
@@ -164,21 +170,25 @@ export class CalendarioComponent {
     if(!this.email){
       const dialogRef = this.dialog.open(LoginDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      var r : string = result;
-      this.checkUser(r.toLowerCase()).then(check => {
-        if(r && check){
-          this.email = r.toLowerCase();
-          this.cookieService.set('email', r.toLowerCase());
-          if(!this.isPrenotato(c)){
-            this.inserisciPrenotazione(c);
-          }
+      dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          var r : string = result;
+          this.checkUser(r.toLowerCase()).then(check => {
+            if(r && check){
+              this.email = r.toLowerCase();
+              this.cookieService.set('email', r.toLowerCase());
+              if(!this.isPrenotato(c)){
+                this.inserisciPrenotazione(c);
+                this.getPrenotazioni();
+              }
+            }
+          })
         }
-      })
-    });
+      });
     }
     else{
       this.inserisciPrenotazione(c);
+      this.getPrenotazioni();
     }
   }
   
@@ -192,7 +202,7 @@ export class CalendarioComponent {
     const dialogRef = this.dialog.open(PrenotazioneDialogComponent, {
       data: {emailUtente: this.email , nomeCorso: c.nome, dataCorso: c.data, sedeCorso: c.sede}
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.email = result;
@@ -205,12 +215,17 @@ export class CalendarioComponent {
           },
           error: (error) => {
             // Show error dialog if something goes wrong
-            this.dialog.open(ErrorDialogComponent, {
+            const dialogRef = this.dialog.open(ErrorDialogComponent, {
               data: 'Token Esauriti'
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+              this.getPrenotazioni();
             });
           }
         });
       }
+      this.getPrenotazioni();
     });
   }
 

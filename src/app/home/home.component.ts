@@ -24,8 +24,8 @@ export class HomeComponent {
   corsiElement!: ElementRef;
 
   
-  //private server: string = "https://localhost:44392/api/";
-  private server: string = "https://www.eleonoraboarettofit.com/api/";
+  private server: string = "https://localhost:44392/api/";
+  //private server: string = "https://www.eleonoraboarettofit.com/api/";
   public homeOffset: number = 0;
   public chiSiamoOffset: number = 0;
   public corsiOffset: number = 0;

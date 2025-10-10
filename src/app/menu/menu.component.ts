@@ -32,8 +32,8 @@ export class MenuComponent {
   router = inject(Router)
   public email: any;
 
-  //private server: string = "https://localhost:44392/api/";
-  private server: string = "https://www.eleonoraboarettofit.com/api/";
+  private server: string = "https://localhost:44392/api/";
+  //private server: string = "https://www.eleonoraboarettofit.com/api/";
   
   constructor(public pageService: PageService,
               private http: HttpClient,
@@ -64,13 +64,15 @@ export class MenuComponent {
     const dialogRef = this.dialog.open(LoginDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      var r : string = result;
-      this.checkUser(r.toLowerCase()).then(check => {
-        if(r && check){
-          this.email = r.toLowerCase();
-          this.cookieService.set('email', r.toLowerCase());
-        }
+      if(result){
+        var r : string = result;
+        this.checkUser(r.toLowerCase()).then(check => {
+          if(r && check){
+            this.email = r.toLowerCase();
+            this.cookieService.set('email', r.toLowerCase());
+          }
       })
+      }
     });
   }
 

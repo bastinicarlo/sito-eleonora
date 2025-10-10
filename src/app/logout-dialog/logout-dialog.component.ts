@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'logout-dialog',
   standalone: true,
-  imports: [MatButtonModule, MatFormField, FormsModule, MatDialogModule, MatInputModule, CommonModule],
+  imports: [MatButtonModule, FormsModule, MatDialogModule, MatInputModule, CommonModule],
   templateUrl: 'logout-dialog.component.html',
 })
 export class LogoutDialogComponent {

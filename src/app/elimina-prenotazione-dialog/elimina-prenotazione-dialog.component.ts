@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'elimina-prenotazione',
   standalone: true,
-  imports: [MatButtonModule, MatFormField, FormsModule, MatDialogModule, MatInputModule, CommonModule],
+  imports: [MatButtonModule, FormsModule, MatDialogModule, MatInputModule, CommonModule],
   templateUrl: 'elimina-prenotazione-dialog.component.html',
 })
 export class EliminaPrenotazioneDialogComponent {
